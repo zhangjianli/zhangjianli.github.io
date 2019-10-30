@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Android App秒开的奥秘e</title>
+    <title>Android App秒开的奥秘</title>
     <url>/2019/10/30/the-secret-of-android-app-performance/</url>
     <content><![CDATA[<h2 id="什么是秒开"><a href="#什么是秒开" class="headerlink" title="什么是秒开"></a>什么是秒开</h2><p>Android App秒开，狭义的讲是指你的App的Activity从启动到显示所花费的时间在1秒以内，广义的讲是指这个过程所花费的时间越少越好。这个时间越短，你的App给用户的感觉就是响应越快，使用越流畅，用户体验更好。秒开是Android App的一个很重要的性能指标。需要我们持续的给予关注和优化。<br>#如何优化秒开<br>Google提供了很多性能优化的<a href="https://developer.android.google.cn/training/best-performance.html" target="_blank" rel="noopener">建议</a>和官方的<a href="https://developer.android.google.cn/studio/profile/index.html" target="_blank" rel="noopener">工具</a>，网上也有非常多的关于Android App性能优化的文章和工具，可以帮助你解决大部分卡顿的问题。但是现实却可能是即使你付出了很多精力去做优化，你的App还是在启动新Activity的时候花费过多的时间。特别是随着需求的不断增长，你的App会变得复杂而庞大，要做优化首先要定位需要优化的点，而这会变得愈发困难。同时大型App在启动新Activity的时间花费过多情况出现的可能性反而会越来越大。</p>
 <p>在众多的优化建议中，有一条比较基本的原则是尽量避免在主线程（或者说UI线程）中进行耗时操作。例如文件读写操作、网络请求、大量计算、循环等等。直观的理解是因为启动新Activity需要在主线程执行很多代码，例如onCreate()等生命周期的回调。如果此时有耗时操作的代码在主线程被执行，到新Activity展示出来所需要的时间就会延长。要优化秒开，首先要能监测主线程的运行状态，那么问题来了，主线程到底是怎样在运行呢？你的代码又是什么时候，如何在主线程被执行的呢？</p>
